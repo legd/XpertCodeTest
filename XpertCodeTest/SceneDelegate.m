@@ -21,7 +21,10 @@
     // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
     
     self.window = [[UIWindow alloc] initWithWindowScene:(UIWindowScene *)scene];
-    [self.window setRootViewController:[[ContactListViewController alloc] init]];
+    ContactListViewController *contactsViewController = [[ContactListViewController alloc] init];
+    UINavigationController *mainNaviagationController = [[UINavigationController alloc] initWithRootViewController:contactsViewController];
+    
+    [self.window setRootViewController:mainNaviagationController];
     [self.window makeKeyAndVisible];
 }
 

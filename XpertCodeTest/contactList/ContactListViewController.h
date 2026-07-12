@@ -9,6 +9,7 @@
 #define ContactListViewController_h
 
 #import <UIKit/UIKit.h>
+#import "ContactViewCell.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

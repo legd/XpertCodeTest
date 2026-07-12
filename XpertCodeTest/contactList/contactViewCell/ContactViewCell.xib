@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="120" id="m4I-BL-eO5" customClass="ContactViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="120"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="m4I-BL-eO5" id="Yxf-ip-DIr">
+                <rect key="frame" x="0.0" y="0.0" width="393" height="120"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DyG-xO-55y">
+                        <rect key="frame" x="10" y="10" width="90" height="90"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="90" id="0Lj-Ia-raq"/>
+                            <constraint firstAttribute="height" constant="90" id="mdj-GU-o6d"/>
+                        </constraints>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yuf-Ls-XGB">
+                        <rect key="frame" x="110" y="10" width="273" height="100"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xuN-pB-Qzx">
+                                <rect key="frame" x="5" y="10" width="263" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WyY-ya-ci3">
+                                <rect key="frame" x="5" y="56" width="263" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="xuN-pB-Qzx" firstAttribute="leading" secondItem="Yuf-Ls-XGB" secondAttribute="leading" constant="5" id="Mnf-yt-bbz"/>
+                            <constraint firstAttribute="trailing" secondItem="xuN-pB-Qzx" secondAttribute="trailing" constant="5" id="Ti8-v8-zO4"/>
+                            <constraint firstAttribute="trailing" secondItem="WyY-ya-ci3" secondAttribute="trailing" constant="5" id="b1P-QW-S6i"/>
+                            <constraint firstItem="WyY-ya-ci3" firstAttribute="top" secondItem="xuN-pB-Qzx" secondAttribute="bottom" constant="10" id="b3T-fa-aAd"/>
+                            <constraint firstItem="xuN-pB-Qzx" firstAttribute="top" secondItem="Yuf-Ls-XGB" secondAttribute="top" constant="10" id="phV-wt-ag5"/>
+                            <constraint firstItem="WyY-ya-ci3" firstAttribute="leading" secondItem="Yuf-Ls-XGB" secondAttribute="leading" constant="5" id="vl4-57-MWY"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="DyG-xO-55y" firstAttribute="top" secondItem="Yxf-ip-DIr" secondAttribute="top" constant="10" id="83g-k2-OJp"/>
+                    <constraint firstItem="Yuf-Ls-XGB" firstAttribute="top" secondItem="Yxf-ip-DIr" secondAttribute="top" constant="10" id="QIU-uM-Pms"/>
+                    <constraint firstItem="DyG-xO-55y" firstAttribute="leading" secondItem="Yxf-ip-DIr" secondAttribute="leading" constant="10" id="XkL-ap-6Ou"/>
+                    <constraint firstAttribute="bottom" secondItem="Yuf-Ls-XGB" secondAttribute="bottom" constant="10" id="mgE-lW-av7"/>
+                    <constraint firstItem="Yuf-Ls-XGB" firstAttribute="leading" secondItem="DyG-xO-55y" secondAttribute="trailing" constant="10" id="qiT-Op-3Xi"/>
+                    <constraint firstAttribute="trailing" secondItem="Yuf-Ls-XGB" secondAttribute="trailing" constant="10" id="vGV-Rd-BrX"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="contactImage" destination="DyG-xO-55y" id="qKA-mo-cVg"/>
+                <outlet property="nameLabel" destination="xuN-pB-Qzx" id="Y5E-VI-e4A"/>
+                <outlet property="phoneLabel" destination="WyY-ya-ci3" id="69o-qh-iLX"/>
+            </connections>
+            <point key="canvasLocation" x="127.48091603053435" y="-65.492957746478879"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
