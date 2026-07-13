@@ -37,6 +37,20 @@
 			);
 			target = 6F4568B02FFF392400089E28 /* XpertCodeTest */;
 		};
+		6FF0B36D3004019E00D71301 /* Exceptions for "XpertCodeTest" folder in "XpertCodeTestTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				persistence/XpertCodeTest.xcdatamodeld,
+			);
+			target = 6F4568CB2FFF392600089E28 /* XpertCodeTestTests */;
+		};
+		6FF0B36E3004019E00D71301 /* Exceptions for "XpertCodeTest" folder in "XpertCodeTestUITests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				persistence/XpertCodeTest.xcdatamodeld,
+			);
+			target = 6F4568D52FFF392600089E28 /* XpertCodeTestUITests */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -44,6 +58,8 @@
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				6F4568DE2FFF392600089E28 /* Exceptions for "XpertCodeTest" folder in "XpertCodeTest" target */,
+				6FF0B36D3004019E00D71301 /* Exceptions for "XpertCodeTest" folder in "XpertCodeTestTests" target */,
+				6FF0B36E3004019E00D71301 /* Exceptions for "XpertCodeTest" folder in "XpertCodeTestUITests" target */,
 			);
 			path = XpertCodeTest;
 			sourceTree = "<group>";
@@ -187,6 +203,7 @@
 				TargetAttributes = {
 					6F4568B02FFF392400089E28 = {
 						CreatedOnToolsVersion = 16.3;
+						LastSwiftMigration = 1630;
 					};
 					6F4568CB2FFF392600089E28 = {
 						CreatedOnToolsVersion = 16.3;
@@ -194,6 +211,7 @@
 					};
 					6F4568D52FFF392600089E28 = {
 						CreatedOnToolsVersion = 16.3;
+						LastSwiftMigration = 1630;
 						TestTargetID = 6F4568B02FFF392400089E28;
 					};
 				};
@@ -286,6 +304,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = U9T4X59LER;
@@ -307,6 +326,9 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "XpertCodeTest/addNewContact/XpertCodeTest-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -316,6 +338,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = U9T4X59LER;
@@ -337,6 +360,8 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "XpertCodeTest/addNewContact/XpertCodeTest-Bridging-Header.h";
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -467,11 +492,16 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = U9T4X59LER;
 				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_TEMP_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/XpertCodeTest.build/DerivedSources/**",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.legd.learning.XpertCodeTestTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/XpertCodeTest.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/XpertCodeTest";
 			};
@@ -485,11 +515,16 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = U9T4X59LER;
 				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_TEMP_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/XpertCodeTest.build/DerivedSources/**",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.legd.learning.XpertCodeTestTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/XpertCodeTest.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/XpertCodeTest";
 			};
@@ -498,6 +533,7 @@
 		6F4568E82FFF392600089E28 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = U9T4X59LER;
@@ -506,6 +542,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = org.legd.learning.XpertCodeTestUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "XpertCodeTestUITests/XpertCodeTestUITests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = XpertCodeTest;
 			};
@@ -514,6 +553,7 @@
 		6F4568E92FFF392600089E28 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = U9T4X59LER;
@@ -522,6 +562,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = org.legd.learning.XpertCodeTestUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "XpertCodeTestUITests/XpertCodeTestUITests-Bridging-Header.h";
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = XpertCodeTest;
 			};
@@ -537,7 +579,7 @@
 				6F4568E32FFF392600089E28 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		6F4568DF2FFF392600089E28 /* Build configuration list for PBXNativeTarget "XpertCodeTest" */ = {
 			isa = XCConfigurationList;
@@ -546,7 +588,7 @@
 				6F4568E12FFF392600089E28 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		6F4568E42FFF392600089E28 /* Build configuration list for PBXNativeTarget "XpertCodeTestTests" */ = {
 			isa = XCConfigurationList;
@@ -555,7 +597,7 @@
 				6F4568E62FFF392600089E28 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		6F4568E72FFF392600089E28 /* Build configuration list for PBXNativeTarget "XpertCodeTestUITests" */ = {
 			isa = XCConfigurationList;
@@ -564,7 +606,7 @@
 				6F4568E92FFF392600089E28 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};

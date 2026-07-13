@@ -10,10 +10,12 @@
 
 #import <UIKit/UIKit.h>
 #import "ContactViewCell.h"
+#import "CoreDataManager.h"
+#import "XpertCodeTest-Swift.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ContactListViewController : UITableViewController
+@interface ContactListViewController : UITableViewController <AddContactDelegate>
 
 @end
 

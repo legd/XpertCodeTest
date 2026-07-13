@@ -10,6 +10,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Contact+CoreDataClass.h"
+#import "ImageLoader.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -20,6 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, weak) IBOutlet UILabel *phoneLabel;
 
 - (void)setContact:(Contact *) contact;
+- (void)setImageURL:(NSURL *)url;
 
 @end
 

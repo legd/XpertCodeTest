@@ -7,6 +7,9 @@
 
 #import "CoreDataManager.h"
 
+static int const SUCCESS = 0;
+static int const FAIL = 1;
+
 @interface CoreDataManager ()
 @property (nonatomic, strong) NSPersistentContainer *persistentContainer;
 @end
@@ -18,7 +21,7 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
 //        sharedInstance = [[CoreDataManager alloc] initWithInMemoryStore:NO];
-        sharedInstance = [[CoreDataManager alloc] initWithInMemoryStore:YES];
+        sharedInstance = [[CoreDataManager alloc] initWithInMemoryStore:YES]; // TIP: For quick testing purposes only.
     });
     return sharedInstance;
 }
@@ -56,13 +59,13 @@
 
 - (void)seedTestData {
     Contact *testContact = [NSEntityDescription insertNewObjectForEntityForName:@"Contact"
-                                                         inManagedObjectContext:self.viewContext]; // TODO:
+                                                         inManagedObjectContext:self.viewContext]; 
     testContact.identifier = [[NSUUID UUID] UUIDString];
     testContact.firstName = @"John";
     testContact.lastName = @"Appleseed";
     testContact.phone = @"123-456-7890";
-    testContact.imageURL = @"N/A";
-    [self saveContext];
+    testContact.imageURL = @"https://randomuser.me/api/portraits/med/men/5.jpg";
+    [self saveContext:^(int result, NSError *error){ }];
 }
 
 - (NSManagedObjectContext *)viewContext {
@@ -74,14 +77,15 @@
 - (void)createContactWithFirstName:(NSString *)firstName
                           lastName:(NSString *)lastName
                              phone:(NSString *)phone
-                          imageURL:(nullable NSString *)imageURL {
+                          imageURL:(nullable NSString *)imageURL
+                        completion:(nonnull void (^)(int result, NSError * _Nullable))completion {
     Contact *contact = [[Contact alloc] initWithContext:self.viewContext];
     contact.identifier = [[NSUUID UUID] UUIDString];
     contact.firstName = firstName;
     contact.lastName = lastName;
     contact.phone = phone;
     contact.imageURL = imageURL;
-    [self saveContext];
+    [self saveContext:completion];
 }
 
 - (NSArray<Contact *> *)fetchAllContacts {
@@ -125,23 +129,32 @@
 
 - (void)deleteContact:(Contact *)contact {
     [self.viewContext deleteObject:contact];
-    [self saveContext];
+    [self saveContext:^(int result, NSError *error){
+        if (result == FAIL) {
+            NSLog(@"[CoreDataManager] Error while deleting a contact: %@", error);
+        }
+    }];
 }
 
 - (void)deleteContacts:(NSArray<Contact *> *)contacts {
     for (Contact *contact in contacts) {
         [self.viewContext deleteObject:contact];
     }
-    [self saveContext];
+    [self saveContext:^(int result, NSError *error){
+        if (result == FAIL) {
+            NSLog(@"[CoreDataManager] Error while deleting multiple contacts: %@", error);
+        }
+    }];
 }
 
-- (void)saveContext {
+- (void)saveContext:(nonnull void (^)(int result, NSError * _Nullable))completion {
     NSManagedObjectContext *context = self.viewContext;
     if ([context hasChanges]) {
         NSError *error = nil;
         if (![context save:&error]) {
-            NSLog(@"[CoreDataManager] Error trying to save context: %@", error);
+            completion(FAIL,error);
         }
+        completion(SUCCESS, nil);
     }
 }
 

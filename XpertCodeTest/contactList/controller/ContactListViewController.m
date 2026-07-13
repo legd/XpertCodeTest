@@ -6,7 +6,7 @@
 //
 
 #import "ContactListViewController.h"
-#import "CoreDataManager.h"
+
 
 static NSString * const kContactCellIdentifier = @"ContactCell";
 
@@ -15,7 +15,6 @@ static NSString * const kContactCellIdentifier = @"ContactCell";
 @property (nonatomic, strong) NSArray<Contact *> *allContacts;
 @property (nonatomic, strong) NSArray<Contact *> *filteredContacts;
 @property (nonatomic, strong) UISearchController *searchController;
-// TODO:
 @property (nonatomic, strong) UIBarButtonItem *deleteBarButtonItem;
 
 @end
@@ -28,28 +27,28 @@ static NSString * const kContactCellIdentifier = @"ContactCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     self.title = @"Contactos";
     self.allContacts = @[];
     self.filteredContacts = @[];
-
+    
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([ContactViewCell class]) bundle:nil] forCellReuseIdentifier:kContactCellIdentifier];
     self.tableView.rowHeight = 120;
-
+    
     // Button to add new contact
     UIBarButtonItem *addContactButton = [[UIBarButtonItem alloc] initWithTitle:@"Nuevo"
                                                                          style:UIBarButtonItemStyleDone
                                                                         target:self
                                                                         action:@selector(newContactTapped)];
     self.navigationItem.rightBarButtonItem = addContactButton;
-
+    
     // Button to delete a contact
     self.deleteBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Borrar"
                                                                 style:UIBarButtonItemStylePlain
                                                                target:self
                                                                action:@selector(deleteButtonTapped)];
     self.navigationItem.leftBarButtonItem = self.deleteBarButtonItem;
-
+    
     // Search bar
     self.searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
     self.searchController.searchResultsUpdater = self;
@@ -58,7 +57,7 @@ static NSString * const kContactCellIdentifier = @"ContactCell";
     self.navigationItem.searchController = self.searchController;
     self.navigationItem.hidesSearchBarWhenScrolling = NO;
     self.definesPresentationContext = YES;
-
+    
     self.tableView.allowsMultipleSelectionDuringEditing = YES;
 }
 
@@ -85,9 +84,10 @@ static NSString * const kContactCellIdentifier = @"ContactCell";
 
 #pragma mark - Acciones de la barra de navegación
 
-// TODO:-
 - (void)newContactTapped {
-
+    __weak typeof(self) weakSelf = self;
+    UIViewController *viewController = [SwiftUIViewFactory makeAddNewContactViewControllerWithStoreManager:[CoreDataManager shared] delegate:weakSelf];
+    [self presentViewController:viewController animated:YES completion:nil];
 }
 
 - (void)deleteButtonTapped {
@@ -98,7 +98,7 @@ static NSString * const kContactCellIdentifier = @"ContactCell";
         self.navigationItem.rightBarButtonItem.enabled = NO;
         return;
     }
-
+    
     // Deletes the selected contacts
     NSArray<NSIndexPath *> *selectedPaths = [self.tableView indexPathsForSelectedRows];
     if (selectedPaths.count > 0) {
@@ -108,7 +108,7 @@ static NSString * const kContactCellIdentifier = @"ContactCell";
         }
         [[CoreDataManager shared] deleteContacts:toDelete];
     }
-
+    
     [self.tableView setEditing:NO animated:YES];
     self.deleteBarButtonItem.title = @"Borrar";
     self.navigationItem.rightBarButtonItem.enabled = YES;
@@ -122,17 +122,10 @@ static NSString * const kContactCellIdentifier = @"ContactCell";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kContactCellIdentifier forIndexPath:indexPath];
-//    Contact *contact = self.currentContacts[indexPath.row];
-//
-//    NSString *fullName = [NSString stringWithFormat:@"%@ %@", contact.firstName ?: @"", contact.lastName ?: @""];
-//    UIListContentConfiguration *contactCell = [cell defaultContentConfiguration];
-//    contactCell.text = fullName;
-//    contactCell.secondaryText = contact.phone;
-//    cell.contentConfiguration = contactCell;
     ContactViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:kContactCellIdentifier forIndexPath:indexPath];
     Contact *contact = self.currentContacts[indexPath.row];
     [cell setContact:contact];
+    [cell setImageURL:[NSURL URLWithString:contact.imageURL]];
 
     return cell;
 }
@@ -156,4 +149,11 @@ static NSString * const kContactCellIdentifier = @"ContactCell";
     self.filteredContacts = [[CoreDataManager shared] searchContactsWithText:text];
     [self.tableView reloadData];
 }
+
+#pragma mark - AddContactDelegate
+- (void)didAddContact {
+    [self dismissViewControllerAnimated:YES completion:nil];
+    [self reloadData];
+}
+
 @end

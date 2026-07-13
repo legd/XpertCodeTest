@@ -31,7 +31,8 @@ NS_ASSUME_NONNULL_BEGIN
                           lastName:(NSString *)lastName
                              phone:(NSString *)phone
                           imageURL:(nullable NSString *)imageURL
-    NS_SWIFT_NAME(createContact(withFirstName:lastName:phone:imageURL:));
+                        completion:(void (^)(int, NSError * _Nullable))completion
+    NS_SWIFT_NAME(createContact(withFirstName:lastName:phone:imageURL:completion:));
 
 - (NSArray<Contact *> *)fetchAllContacts;
 
@@ -45,7 +46,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)deleteContacts:(NSArray<Contact *> *)contacts NS_SWIFT_NAME(delete(_:));
 
 ///  Save changes
-- (void)saveContext;
+- (void)saveContext:(nonnull void (^)(int result, NSError * _Nullable))completion;
 
 @end
 
